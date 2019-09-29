@@ -27,7 +27,8 @@ app.config['SECRET_KEY'] = 'super-secret'
 # You'll need to connect as a user with sufficient privileges to create tables and read and write to them.
 # Replace this with your own database connection string.
 #xxxxx
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:xxxxxxxx@localhost/flask_example'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:xxxxxxxx@localhost/flask_example'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 
 # Set config values for Flask-Security.
 # We're using PBKDF2 with salt.
@@ -196,7 +197,7 @@ admin.add_view(RoleAdmin(Role, db.session))
 # If running locally, listen on all IP addresses, port 8080
 if __name__ == '__main__':
     app.run(
-        host='0.0.0.0',
+        # host='0.0.0.0',
         port=int('8080'),
         debug=app.config['DEBUG']
     )
